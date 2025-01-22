@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+// Define color variables
+$primary-color: #E50914; // Netflix Red
+$secondary-color: #221F20; // Dark Gray
+$background-color: #141414; // Very Dark Gray
+$accent-color: #FFFFFF; // White
+$highlight-color: #B3B3B3; // Light Gray
+
+.movie-box {
+  background-color: $secondary-color; // White background for the movie box
+  border-radius: 8px; // Rounded corners
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); // Subtle shadow for depth
+  overflow: hidden; // Hide overflow
+  transition: transform 0.2s, box-shadow 0.2s; // Smooth transition for hover effect
+  cursor: pointer; // Change cursor to pointer
+  display: flex; // Use flexbox for layout
+  flex-direction: column; // Stack children vertically
+  align-items: center; // Center align items
+  padding: 0.5rem; // Reduced padding inside the card
+  width: 200px; // Width for the card
+  margin: 0 auto; // Center the card horizontally
+  margin-bottom: 0.2rem; // Reduced space between movie boxes
+  font-family: 'Roboto', sans-serif; // Apply Roboto font
+
+  img {
+    width: 100%; // Full width for the image
+    height: 250px; // Set a fixed height for the image to make it bigger
+    object-fit: cover; // Ensure the image covers the area without distortion
+    border-radius: 4px; // Slightly round the image corners
+  }
+
+  h3 {
+    margin: 0.5rem 0; // Margin for the title
+    font-size: 1.2rem; // Font size for the title
+    color: white; // Dark color for the title
+    text-align: center; // Center align the title
+  }
+
+  p {
+    margin: 0.5rem 0; // Margin for the description
+    font-size: 0.9rem; // Font size for the description
+    color: #666; // Lighter color for the description
+    text-align: center; // Center align the description
+  }
+
+  &:hover {
+    transform: translateY(-5px); // Lift the card on hover
+    border: 2px solid $secondary-color; // Neon border color
+    box-shadow: 0 0 10px $secondary-color, 0 0 20px $secondary-color; // Neon glow effect
+  }
+}
+
+// Modal styles
+.modal {
+  position: fixed; // Fixed position
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000; // Ensure it appears above other content
+  
+}
+
+.modal-overlay {
+  position: absolute; // Position absolute to cover the entire modal
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); // Semi-transparent background
+  display: flex; // Flexbox for centering
+  justify-content: center; // Center horizontally
+  align-items: center; // Center vertically
+}
+
+.modal-content {
+  background-color: $background-color; // White background for modal content
+  border-radius: 8px; // Rounded corners
+  display: flex; // Flexbox for layout
+  flex-direction: column; // Stack children vertically
+  align-items: center; // Center align items
+  width: 90%; // Width of the modal
+  max-width: 800px; // Maximum width for the modal  
+  padding: 1rem; // Padding inside the modal
+  position: relative; // Position relative for the close button
+   // Neon border effect
+    border: 2px solid $secondary-color; // Neon border color
+    box-shadow: 0 0 10px $secondary-color, 0 0 20px $secondary-color; // Neon glow effect
+}
+
+.close {
+  position: absolute; // Position the close button
+  top: 10px; // Distance from the top
+  right: 20px; // Distance from the right
+  font-size: 1.5rem; // Size of the close button
+  color: #333; // Color of the close button
+  cursor: pointer; // Change cursor to pointer
+  z-index: 10; // Ensure it appears above other content
+  font-family: 'Roboto', sans-serif; // Use Roboto font for the close button
+}
+
+.modal-body {
+  display: flex; // Flexbox for modal body layout
+  flex-direction: column; // Stack children vertically
+  align-items: center; // Center align items
+  justify-content: center; // Center content vertically
+  
+}
+
+.modal-poster {
+  margin-bottom: 1rem; // Space between poster and description
+
+  img {
+    width: 100%; // Full width for the poster in the modal
+    height: auto; // Maintain aspect ratio
+    max-height: 400px; // Set a maximum height for the poster
+    object-fit: cover; // Ensure the image covers the area without distortion
+  }
+}
+
+.modal-description {
+  text-align: center; // Center align the description text
+  display: flex;
+  flex-direction: column; // Stack children vertically
+  justify-content: center; // Center content vertically
+  align-items: center; // Center align items
+  font-family: 'Roboto', sans-serif; // Use Roboto font for the description
+}
+
+.watch-now {
+  background-color: $primary-color; // Button background color
+  color: white; // Button text color
+  border: none; // Remove border
+  border-radius: 4px; // Rounded corners
+  padding: 0.5rem 1rem; // Padding for the button
+  cursor: pointer; // Change cursor to pointer
+  font-size: 1rem; // Font size for the button
+  margin-top: 1rem; // Space above the button
+  transition: background-color 0.3s; // Smooth transition for hover effect
+}
+
+.watch-now:hover {
+  background-color: $highlight-color; // Darker shade on hover
+  color:$background-color;
+}

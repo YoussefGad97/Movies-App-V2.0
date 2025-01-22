@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "MyFont";
+  src: url("../assets/fonts/VoxelpointDemo-LVO5G.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+// Define color variables
+$primary-color: #E50914; // Netflix Red
+$secondary-color: #221F20; // Dark Gray
+$background-color: #141414; // Very Dark Gray
+$accent-color: #FFFFFF; // White
+$highlight-color: #B3B3B3; // Light Gray
+
+
+body {
+  font-family: "MyFont", sans-serif; /* Set the default font for the site */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $background-color; /* Dark background for the navbar */
+  padding: 1rem 2rem;
+}
+
+.navbar-brand {
+  color: $primary-color; /* Light color for the brand */
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem; /* Space between links */
+}
+
+.navbar-links li a {
+  color: $primary-color; /* Link color */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+.navbar-links li a:hover {
+  color: $highlight-color; /* Change color on hover */
+}
