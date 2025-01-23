@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../components/navbar';
 import MovieBox from '../components/MovieBox';
 import '../styles/home.scss'; // Assuming you will create a CSS file for styling
+import '../styles/SearchResults.scss';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -25,41 +26,37 @@ const Home = () => {
     setCurrentPage(page);
   };
 
-  // Generate pagination numbers
+  // Simplified pagination function
   const renderPagination = () => {
-    const paginationNumbers = [];
-    const startPage = Math.floor((currentPage - 1) / 10) * 10 + 1; // Calculate the start page for the current set of 10
-    const endPage = Math.min(startPage + 9, totalPages); // Calculate the end page
-
-    for (let i = startPage; i <= endPage; i++) {
-      paginationNumbers.push(
-        <button
-          key={i}
-          className={`pagination-button ${i === currentPage ? 'active' : ''}`}
-          onClick={() => handlePageChange(i)}
+    return (
+      <>
+        <button 
+          onClick={() => handlePageChange(currentPage - 1)} 
+          disabled={currentPage === 1}
         >
-          {i}
+          Previous
         </button>
-      );
-    }
-
-    return paginationNumbers;
+        <span>Page {currentPage} of {totalPages}</span>
+        <button 
+          onClick={() => handlePageChange(currentPage + 1)} 
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
+      </>
+    );
   };
 
   return (
-    <div>
-      <div className="movie-grid">
+    <div className="now-playing">
+      <h1 className="page-header">Now Playing</h1>
+      <div className="movies-list">
         {movies.map((movie) => (
           <MovieBox key={movie.id} movie={movie} />
         ))}
       </div>
       <div className="pagination">
         {renderPagination()}
-        {currentPage < totalPages && (
-          <button className="pagination-button" onClick={() => handlePageChange(currentPage + 1)}>
-            Next
-          </button>
-        )}
       </div>
     </div>
   );

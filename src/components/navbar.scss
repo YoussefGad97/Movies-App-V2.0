@@ -6,12 +6,11 @@
 }
 
 // Define color variables
-$primary-color: #E50914; // Netflix Red
-$secondary-color: #221F20; // Dark Gray
+$primary-color: #e50914; // Netflix Red
+$secondary-color: #221f20; // Dark Gray
 $background-color: #141414; // Very Dark Gray
-$accent-color: #FFFFFF; // White
-$highlight-color: #B3B3B3; // Light Gray
-
+$accent-color: #ffffff; // White
+$highlight-color: #b3b3b3; // Light Gray
 
 body {
   font-family: "MyFont", sans-serif; /* Set the default font for the site */
@@ -20,11 +19,13 @@ body {
 }
 
 .navbar {
+  background-color: #221f20; // Dark background for the navbar
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $background-color; /* Dark background for the navbar */
-  padding: 1rem 2rem;
+  position: relative; // Add this to establish positioning context
+  z-index: 1001; // Ensure navbar stays on top
 }
 
 .navbar-brand {
@@ -47,4 +48,82 @@ body {
 
 .navbar-links li a:hover {
   color: $highlight-color; /* Change color on hover */
+}
+
+.search-button {
+  background: none;
+  border: none;
+  color: $primary-color;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $highlight-color;
+  }
+}
+
+.search-wrapper {
+  position: fixed; // Change from absolute to fixed
+  top: 64px; // Height of navbar (adjust this value based on your navbar height)
+  left: 0;
+  right: 0;
+  background-color: rgba($background-color, 0.95);
+  padding: 1rem;
+  transform-origin: top;
+  animation: slideDown 0.3s ease-out;
+  z-index: 1000; // Just below navbar
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Add shadow for depth
+}
+
+.search-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  border: 2px solid $highlight-color;
+  border-radius: 25px;
+  background-color: transparent;
+  color: $accent-color;
+  font-size: 1rem;
+  transition: all 0.3s;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 10px rgba($primary-color, 0.3);
+  }
+
+  &::placeholder {
+    color: $highlight-color;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.submit-button {
+  background-color: #e50914; // Netflix Red
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ff6f61; // Lighter red on hover
+  }
 }

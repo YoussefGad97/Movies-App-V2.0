@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+// Define color variables
+$primary-color: #E50914; // Netflix Red
+$secondary-color: #221F20; // Dark Gray
+$background-color: #141414; // Very Dark Gray
+$accent-color: #FFFFFF; // White
+$highlight-color: #B3B3B3; // Light Gray
+
+.upcoming-movies {
+  padding: 20px;
+  background-color: $background-color;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: $accent-color;
+  }
+
+  .movies-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .movie-box {
+      margin: 10px;
+      width: 200px;
+      background-color: $secondary-color;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      h2 {
+        font-size: 1.2em;
+        padding: 10px;
+        text-align: center;
+        color: $accent-color;
+      }
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    button {
+      margin: 0 10px;
+      padding: 10px 15px;
+      background-color: $primary-color;
+      color: $accent-color;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:disabled {
+        background-color: $highlight-color;
+        cursor: not-allowed;
+      }
+    }
+
+    span {
+      align-self: center;
+      margin: 0 10px;
+      color: $accent-color;
+    }
+  }
+}
