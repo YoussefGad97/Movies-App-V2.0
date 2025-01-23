@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./MovieBox.scss"; // Import the SCSS file for styling
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 
 const MovieBox = ({ movie }) => {
   const { title, poster_path, overview } = movie; // Destructure the movie object
   const [isOpen, setIsOpen] = useState(false); // State to manage modal visibility
   const modalRef = useRef(null); // Ref for the modal
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const handleOpen = () => {
     setIsOpen(true);
@@ -43,6 +47,29 @@ const MovieBox = ({ movie }) => {
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    // Check if movie is in favorites
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    setIsFavorite(favorites.some(fav => fav.id === movie.id));
+  }, [movie.id]);
+
+  const toggleFavorite = (e) => {
+    e.stopPropagation(); // Prevent event bubbling
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    
+    if (isFavorite) {
+      // Remove from favorites
+      const updatedFavorites = favorites.filter(fav => fav.id !== movie.id);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      setIsFavorite(false);
+    } else {
+      // Add to favorites
+      const updatedFavorites = [...favorites, movie];
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      setIsFavorite(true);
+    }
+  };
+
   return (
     <div>
       <div className="movie-box" onClick={handleOpen}>
@@ -51,6 +78,12 @@ const MovieBox = ({ movie }) => {
           alt={title}
         />
         <h3>{title}</h3>
+        <button 
+          className={`favorite-button ${isFavorite ? 'active' : ''}`}
+          onClick={toggleFavorite}
+        >
+          <FontAwesomeIcon icon={isFavorite ? solidHeart : regularHeart} />
+        </button>
         {/* Description is hidden */}
       </div>
 

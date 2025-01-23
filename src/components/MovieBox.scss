@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 // Define color variables
-$primary-color: #E50914; // Netflix Red
-$secondary-color: #221F20; // Dark Gray
+$primary-color: #e50914; // Netflix Red
+$secondary-color: #221f20; // Dark Gray
 $background-color: #141414; // Very Dark Gray
-$accent-color: #FFFFFF; // White
-$highlight-color: #B3B3B3; // Light Gray
+$accent-color: #ffffff; // White
+$highlight-color: #b3b3b3; // Light Gray
 
 .movie-box {
   background-color: $secondary-color; // White background for the movie box
@@ -21,7 +21,8 @@ $highlight-color: #B3B3B3; // Light Gray
   width: 200px; // Width for the card
   margin: 0 auto; // Center the card horizontally
   margin-bottom: 0.2rem; // Reduced space between movie boxes
-  font-family: 'Roboto', sans-serif; // Apply Roboto font
+  font-family: "Roboto", sans-serif; // Apply Roboto font
+  position: relative; // Add this for favorite button positioning
 
   img {
     width: 100%; // Full width for the image
@@ -59,7 +60,6 @@ $highlight-color: #B3B3B3; // Light Gray
   right: 0;
   bottom: 0;
   z-index: 1000; // Ensure it appears above other content
-  
 }
 
 .modal-overlay {
@@ -81,12 +81,12 @@ $highlight-color: #B3B3B3; // Light Gray
   flex-direction: column; // Stack children vertically
   align-items: center; // Center align items
   width: 90%; // Width of the modal
-  max-width: 800px; // Maximum width for the modal  
+  max-width: 800px; // Maximum width for the modal
   padding: 1rem; // Padding inside the modal
   position: relative; // Position relative for the close button
-   // Neon border effect
-    border: 2px solid $secondary-color; // Neon border color
-    box-shadow: 0 0 10px $secondary-color, 0 0 20px $secondary-color; // Neon glow effect
+  // Neon border effect
+  border: 2px solid $secondary-color; // Neon border color
+  box-shadow: 0 0 10px $secondary-color, 0 0 20px $secondary-color; // Neon glow effect
 }
 
 .close {
@@ -97,7 +97,7 @@ $highlight-color: #B3B3B3; // Light Gray
   color: #333; // Color of the close button
   cursor: pointer; // Change cursor to pointer
   z-index: 10; // Ensure it appears above other content
-  font-family: 'Roboto', sans-serif; // Use Roboto font for the close button
+  font-family: "Roboto", sans-serif; // Use Roboto font for the close button
 }
 
 .modal-body {
@@ -105,7 +105,6 @@ $highlight-color: #B3B3B3; // Light Gray
   flex-direction: column; // Stack children vertically
   align-items: center; // Center align items
   justify-content: center; // Center content vertically
-  
 }
 
 .modal-poster {
@@ -125,7 +124,7 @@ $highlight-color: #B3B3B3; // Light Gray
   flex-direction: column; // Stack children vertically
   justify-content: center; // Center content vertically
   align-items: center; // Center align items
-  font-family: 'Roboto', sans-serif; // Use Roboto font for the description
+  font-family: "Roboto", sans-serif; // Use Roboto font for the description
 }
 
 .watch-now {
@@ -142,5 +141,31 @@ $highlight-color: #B3B3B3; // Light Gray
 
 .watch-now:hover {
   background-color: $highlight-color; // Darker shade on hover
-  color:$background-color;
+  color: $background-color;
+}
+
+.favorite-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba($background-color, 0.7);
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: $accent-color;
+
+  &:hover {
+    background: rgba($background-color, 0.9);
+    transform: scale(1.1);
+  }
+
+  &.active {
+    color: $primary-color;
+  }
 }
