@@ -43,7 +43,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar">
-        <div className="navbar-brand">My Movie App</div>
+        <div className="navbar-brand">Easy Movie</div>
         <ul className="navbar-links">
           <li><a href="/">Now Playing</a></li>
           <li><a href="/top-movies">Top Movies</a></li>
