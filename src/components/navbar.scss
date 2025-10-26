@@ -50,6 +50,41 @@ body {
   color: $highlight-color; /* Change color on hover */
 }
 
+.navbar-toggle {
+  display: none; // Hidden by default
+  flex-direction: column;
+  cursor: pointer;
+
+  span {
+    height: 2px;
+    width: 25px;
+    background: $primary-color;
+    margin-bottom: 4px;
+    border-radius: 2px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none; // Hide links on small screens
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: $secondary-color;
+    padding: 1rem 0;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  .navbar-toggle {
+    display: flex; // Show hamburger icon
+  }
+}
+
 .search-button {
   background: none;
   border: none;

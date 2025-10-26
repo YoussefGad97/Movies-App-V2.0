@@ -6,6 +6,11 @@ const Navbar = () => {
   const [isSearchVisible, setSearchVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState(null);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleMobileMenuToggle = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   const handleSearchToggle = () => {
     setSearchVisible(!isSearchVisible);
@@ -44,7 +49,12 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <div className="navbar-brand">Easy Movie</div>
-        <ul className="navbar-links">
+        <div className="navbar-toggle" onClick={handleMobileMenuToggle}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul className={`navbar-links ${isMobileMenuOpen ? 'active' : ''}`}>
           <li><a href="/">Now Playing</a></li>
           <li><a href="/top-movies">Top Movies</a></li>
           <li><a href="/top-tv">Top TV</a></li>

@@ -23,13 +23,13 @@ body {
   }
 
   .movies-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
 
     .movie-box {
-      margin: 10px;
-      width: 200px;
+      margin: 0;
+      width: 100%;
       background-color: $secondary-color;
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -46,6 +46,13 @@ body {
         text-align: center;
         color: $accent-color;
       }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .movies-list {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
     }
   }
 
